@@ -10,6 +10,7 @@ The project here before you has been one of my most challenging projects yet. It
 * Maintain mindfulness and balance, and your code will naturally be better.
 
 # Tech Used
+* Gradle
 * Java
 * JavaScript
 * Html
