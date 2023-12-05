@@ -3,10 +3,12 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <jsp:include page="_head.jsp" />
 <body>
-<jsp:include page="_navbar.jsp"/>
-<div class="container">
-	<h1 class="error-title">Sorry! We couldn't find that!</h1>
-</div>
-<jsp:include page="_footer.jsp"/>
+	<jsp:include page="_navbar.jsp" />
+	<main>
+		<div class="container listing">
+			<h1 class="error-title">Sorry! We couldn't find that!</h1>
+		</div>
+	</main>
+	<jsp:include page="_footer.jsp" />
 </body>
 </html>

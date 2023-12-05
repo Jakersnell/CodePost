@@ -21,7 +21,7 @@ public class MainController {
 	@Autowired
 	private PostDAO postDAO;
 
-	@GetMapping
+	@GetMapping(path = { "/", "home.do" })
 	public ModelAndView home() {
 		ModelAndView mav = new ModelAndView("home");
 		List<Post> posts = postDAO.findAll();
@@ -29,7 +29,7 @@ public class MainController {
 		return mav;
 	}
 
-	@GetMapping("/post")
+	@GetMapping(path = { "/post", "post.do" })
 	public ModelAndView post(@RequestParam("id") int id) {
 		ModelAndView mav = new ModelAndView("post");
 		Post result = postDAO.findById(id);
@@ -43,14 +43,14 @@ public class MainController {
 		return mav;
 	}
 
-	@GetMapping("/create-post")
+	@GetMapping(path = { "/create-post", "create-post.do" })
 	public ModelAndView createPost(@RequestParam(name = "error", required = false) String error) {
 		ModelAndView mav = new ModelAndView("create-post");
 		mav.addObject("action", "/create-post");
 		return mav;
 	}
 
-	@PostMapping("/create-post")
+	@PostMapping(path = { "/create-post", "create-post.do" })
 	public String createPost(@ModelAttribute Post post, RedirectAttributes attr) {
 		String redirect = "redirect:/create-post";
 
@@ -61,7 +61,7 @@ public class MainController {
 		return redirect;
 	}
 
-	@GetMapping("/update-post")
+	@GetMapping(path = { "/update-post", "update-post.do" })
 	public ModelAndView updatePost(@RequestParam("id") int id) {
 		ModelAndView mav = new ModelAndView("create-post");
 		mav.addObject("action", "/update-post");
@@ -70,7 +70,7 @@ public class MainController {
 		return mav;
 	}
 
-	@PostMapping("/update-post")
+	@PostMapping(path = { "/update-post", "update-post.do" })
 	public String updatePost(@ModelAttribute Post post) {
 		String view = "redirect:/post?id=" + post.getId();
 		post = postDAO.update(post);
@@ -80,7 +80,7 @@ public class MainController {
 		return view;
 	}
 
-	@GetMapping("/delete-post")
+	@GetMapping(path = { "/delete-post", "delete-post.do" })
 	public ModelAndView deletePost(@RequestParam("id") int id,
 			@RequestParam(name = "error", required = false) String error) {
 		ModelAndView mav = new ModelAndView("post");
@@ -95,7 +95,7 @@ public class MainController {
 		return mav;
 	}
 
-	@PostMapping("/delete-post")
+	@PostMapping(path = { "/delete-post", "delete-post.do" })
 	public String deletePost(@RequestParam("id") int id, RedirectAttributes attr) {
 		String redirect = "redirect:/";
 		postDAO.delete(id);
@@ -103,10 +103,18 @@ public class MainController {
 		return redirect;
 	}
 
-	@GetMapping("/search")
+	@GetMapping(path = { "/search", "search.do" })
 	public ModelAndView search(@RequestParam("query") String query) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("posts", postDAO.search(query));
+		ModelAndView mav = new ModelAndView("home");
+		List<Post> posts = postDAO.search(query);
+
+		if (posts.isEmpty()) {
+			mav.setViewName("redirect:/404");
+		} else {
+			mav.addObject("posts", posts);
+			mav.addObject("message", "Search results.");
+		}
+
 		return mav;
 	}
 }

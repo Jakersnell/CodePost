@@ -29,6 +29,11 @@ dependencies {
 	implementation project('CodePostJPA')
 }
 
+war {
+  archiveFileName = "${archivesBaseName}.war"
+  destinationDirectory = file("../") 
+}
+
 
 tasks.named('test') {
 	useJUnitPlatform()

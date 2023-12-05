@@ -56,7 +56,7 @@ public class PostDAOImpl implements PostDAO {
 	public List<Post> search(String query) {
 		String jpql = "SELECT p FROM Post p WHERE p.title LIKE :query OR p.description LIKE :query OR p.author LIKE :query OR p.codeSnippet LIKE :query";
 		query = "%" + query + "%";
-		return em.createQuery(jpql, Post.class).getResultList();
+		return em.createQuery(jpql, Post.class).setParameter("query", query).getResultList();
 	}
 
 }

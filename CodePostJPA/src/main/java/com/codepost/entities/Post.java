@@ -14,7 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="post")
+@Table(name = "post")
 public class Post {
 
 	@Id
@@ -85,8 +85,7 @@ public class Post {
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", author=" + author + ", title=" + title + ", description=" + description
-				+ ", codeSnippet=" + codeSnippet + ", language=" + language + ", createdOn=" + createdOn
-				+ ", lastUpdated=" + lastUpdated + "]";
+				+ ", language=" + language + ", createdOn=" + createdOn + ", lastUpdated=" + lastUpdated + "]";
 	}
 
 	public int getId() {

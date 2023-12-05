@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
 	<div class="container-fluid">
-		<a href="/"><div class="brand-box">
+		<a href="home.do"><div class="brand-box">
 				<h4>CodePost</h4>
 			</div></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -14,7 +14,7 @@
 			<a class="nav-link" href="create-post">Make A Post</a>
 
 			<div class="navbar-nav me-auto mb-2 mb-lg-0"></div>
-			<form class="d-flex" action="search" method="POST">
+			<form class="d-flex" action="search.do" method="GET">
 				<input class="form-control me-2" type="text" name="query"
 					placeholder="search posts" aria-label="Search" required
 					style="width: 40vw;">

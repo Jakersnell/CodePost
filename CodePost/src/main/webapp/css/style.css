@@ -10,7 +10,7 @@
 }
 
 body {
-	background-image: url(/img/background.gif);
+	background-image: url(../img/background.gif);
 	background-size: 8%;
 }
 
@@ -60,17 +60,36 @@ nav {
 
 /*------------------------BEGIN-MAIN-STYLES---------------------------*/
 
+label {
+	color: white;
+}
 .spacer {
 	padding: 1rem;
 }
 
-.container {
+.listing,
+.message-box, .post-detail {
 	border-radius: 1rem;
-	margin-top: 2.5rem;
+	width: 70%;
+
+}
+
+.listing, .post-detail {
+	padding: 1rem;
+    margin-top: 2.5rem;
 	min-height: 10rem;
 	background-color: white;
-	width: 70%;
-	padding: 1rem;
+}
+
+.message-box {
+	margin-top: 1rem;
+	margin-bottom: -1rem;
+	height: min-content;
+}
+
+.message {
+	color: white;
+	width: fit-content;
 }
 
 .listing:hover {
@@ -111,6 +130,23 @@ code {
 	background-color: lightgray;
 	border-radius: 0.6rem;
 }
+
+main {
+	min-height: 75vh;
+}
+
+/*.description {
+	float: inline-end;
+	background-color: black;
+	color: white;
+	width: fit-content;
+	padding: 2rem;
+	border-radius: 1rem;
+}*/
+.description {
+	font-size: large;
+}
+
 
 /*-----------------------BEGIN-FOOTER-STYLES--------------------------*/
 

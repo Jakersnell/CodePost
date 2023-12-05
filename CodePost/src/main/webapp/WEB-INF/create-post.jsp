@@ -14,7 +14,7 @@
 						<h5 style="color: red;">${error}</h5>
 					</div>
 				</c:if>
-				<form class="create-post-form" action="${action}" method="POST">
+				<form class="create-post-form" action="${action}.do" method="POST">
 
 					<c:if test="${post != null}">
 						<input type="hidden" id="postId" name="id" value="${post.id}" />
@@ -62,9 +62,8 @@
 					<!-- Language -->
 
 					<select class="form-select form-select-lg mb-3"
-						aria-label=".form-select-lg example" name="language"
-						value="${post.language.upper}" required>
-						<option value="" selected>Select A Code Language</option>
+						aria-label=".form-select-lg example" name="language" required>
+						<option value="${post.language.upper}" selected>${post.language.value}</option>
 						<option value="RUST">Rust</option>
 						<option value="JAVA">Java</option>
 						<option value="PYTHON">Python</option>
